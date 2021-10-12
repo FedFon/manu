@@ -4,7 +4,7 @@
   "description": "server for application",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon ./server.js --exec babel-node -e js"
   },
   "author": "Federico Fonseca",
   "license": "ISC",
