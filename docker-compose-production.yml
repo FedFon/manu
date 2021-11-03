@@ -4,17 +4,20 @@ version: "3"
 #Specify services included in our application
 services:
   client:
-    image: client
-    build: ./frontend/
+    image: client-production
+    #if application is stopped, docker will try to restart unless we told it specifically to stop
+    restart: unless-stopped
     stdin_open: true
     ports:
-      - "2000:2000"
+      - "80:80"
+      - "443:443"
     networks:
       - mern-app
 
   api-server:
     image: api-server
-    build: ./backend/
+    #if application is stopped, docker will try to restart unless we told it specifically to stop
+    restart: unless-stopped
     ports:
       - "3000:3000"
     networks:
