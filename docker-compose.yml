@@ -1,0 +1,27 @@
+#Secify version of docker compose
+version: "3"
+
+#Specify services included in our application
+services:
+  client:
+    image: client
+    build: ./client
+    stdin_open: true
+    ports:
+      - "2000:2000"
+    networks:
+      - mern-app
+
+  api-server:
+    image: api-server
+    build: ./api-server
+    ports:
+      - "5000:5000"
+    network:
+      - mern-app
+
+networks:
+  mern-app:
+    driver: bridge
+
+volumes:
