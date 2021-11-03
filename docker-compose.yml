@@ -5,7 +5,7 @@ version: "3"
 services:
   client:
     image: client
-    build: ./client
+    build: ./frontend/
     stdin_open: true
     ports:
       - "2000:2000"
@@ -14,14 +14,12 @@ services:
 
   api-server:
     image: api-server
-    build: ./api-server
+    build: ./backend/
     ports:
-      - "5000:5000"
-    network:
+      - "3000:3000"
+    networks:
       - mern-app
 
 networks:
   mern-app:
     driver: bridge
-
-volumes:
